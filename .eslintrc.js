@@ -9,7 +9,7 @@ module.exports = {
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', //为了解决格式化和es规范的冲突
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     indent: 0,
     'space-before-function-paren': 0
   }
