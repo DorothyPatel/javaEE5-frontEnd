@@ -1,16 +1,36 @@
 <template>
-  <el-menu id="menu1" default-active="2" class="el-menu-vertical-demo" router>
-    <el-sub-menu :index="item.id" v-for="item in menusList" :key="item.id">
+  <el-menu
+    id="menu1"
+    :default-active="defaultActive"
+    class="el-menu-vertical-demo"
+    router
+    unique-opened
+  >
+    <el-sub-menu
+      :index="item.id"
+      v-for="(item, index) in menusList"
+      :key="item.id"
+    >
       <template #title>
-        <el-icon><location /></el-icon>
+        <el-icon>
+          <component :is="iconList[index]"></component>
+        </el-icon>
         <span>{{ item.authName }}</span>
       </template>
       <el-menu-item
         :index="'/' + it.path"
         v-for="it in item.children"
         :key="it.id"
-        >{{ it.authName }}</el-menu-item
+        @click="savePath(it.path)"
       >
+        <template #title>
+          <el-icon>
+            <component :is="icon"></component>
+          </el-icon>
+          <!-- <span>{{ item.authName }}</span> -->
+          {{ it.authName }}
+        </template>
+      </el-menu-item>
       <!-- <el-menu-item-group title="Group One">
         <el-menu-item index="1-1">item one</el-menu-item>
         <el-menu-item index="1-2">item two</el-menu-item>
@@ -41,13 +61,18 @@
 <script setup>
 import { menuList } from '@/api/menu'
 import { ref } from 'vue'
-// import variables from '@/styles/variables.module.scss'
+
+const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
+const icon = ref('menu')
 const menusList = ref([])
 const initMenusList = async () => {
   menusList.value = await menuList()
-  // console.log(res)
 }
+const defaultActive = ref(sessionStorage.getItem('path' || '/users'))
 initMenusList()
+const savePath = (path) => {
+  sessionStorage.setItem('path', `/${path}`)
+}
 </script>
 <style lang="scss" scoped>
 #menu1 {
