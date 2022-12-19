@@ -65,5 +65,30 @@ module.exports = {
       })
       .end()
   },
+  devServer: {
+    https: false,
+    hot: 'only',
+    proxy: {
+      '/api': {
+        target: 'https://lianghj.top:8888/api/private/v1/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        // 或 prependData:   // 8版本用prependData:
+        // prependData:
+        additionalData: `
+          @import "@/styles/variables.scss";  // scss文件地址
+          @import "@/styles/mixin.scss";     // scss文件地址
+        `
+      }
+    }
+  },
   transpileDependencies: true
 }
