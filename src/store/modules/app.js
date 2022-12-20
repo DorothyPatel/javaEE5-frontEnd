@@ -9,7 +9,8 @@ export default {
     // 设置静态变量
     token: localStorage.getItem('token') || '',
     // siderBar的状态，初始为true值
-    siderType: true
+    siderType: true,
+    lang: localStorage.getItem('lang') || 'zh'
   }),
   mutations: {
     // 提交更新数据的方法
@@ -19,6 +20,9 @@ export default {
     },
     changeSiderType(state) {
       state.siderType = !state.siderType
+    },
+    changeLang(state, lang) {
+      state.lang = lang
     }
   },
   actions: {

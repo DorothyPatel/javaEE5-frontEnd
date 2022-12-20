@@ -18,7 +18,8 @@
         <el-icon>
           <component :is="iconList[index]"></component>
         </el-icon>
-        <span>{{ item.authName }}</span>
+        <!-- <span>{{ item.authName }}</span> -->
+        <span>{{ $t(`manage.${item.path}`) }}</span>
       </template>
       <el-menu-item
         :index="'/' + it.path"
@@ -30,7 +31,7 @@
           <el-icon>
             <component :is="icon"></component>
           </el-icon>
-          {{ it.authName }}
+          {{ $t(`menus.${it.path}`) }}
         </template>
       </el-menu-item>
     </el-sub-menu>
@@ -49,6 +50,7 @@ const icon = ref('menu')
 const menusList = ref([])
 const initMenusList = async () => {
   menusList.value = await menuList()
+  console.log(menuList.authName)
 }
 const defaultActive = ref(sessionStorage.getItem('path' || '/users'))
 initMenusList()
