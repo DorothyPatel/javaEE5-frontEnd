@@ -78,17 +78,18 @@ module.exports = {
       }
     }
   },
-  css: {
-    loaderOptions: {
-      sass: {
-        // 或 prependData:   // 8版本用prependData:
-        // prependData:
-        additionalData: `
-          @import "@/styles/variables.scss";  // scss文件地址
-          @import "@/styles/mixin.scss";     // scss文件地址
-        `
-      }
-    }
-  },
+  // css: {
+  //   loaderOptions: {
+  //     scss: {
+  //       // 或 prependData:   // 8版本用prependData:
+  //       // prependData:
+  //       // @import "@/styles/variables.scss";
+  //       additionalData: `
+  //         @import "@/styles/variables.scss";
+  //         @import "@/styles/mixin.scss";
+  //       `
+  //     }
+  //   }
+  // },
   transpileDependencies: true
 }

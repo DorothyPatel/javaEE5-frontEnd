@@ -7,13 +7,18 @@ export default {
   namespaced: true,
   state: () => ({
     // 设置静态变量
-    token: localStorage.getItem('token') || ''
+    token: localStorage.getItem('token') || '',
+    // siderBar的状态，初始为true值
+    siderType: true
   }),
   mutations: {
     // 提交更新数据的方法
     setToken(state, token) {
       state.token = token
       localStorage.setItem('token', token)
+    },
+    changeSiderType(state) {
+      state.siderType = !state.siderType
     }
   },
   actions: {

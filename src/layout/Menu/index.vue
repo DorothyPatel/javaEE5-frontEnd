@@ -1,15 +1,18 @@
 <template>
   <el-menu
     id="menu1"
+    background-color="#db70db"
     :default-active="defaultActive"
     class="el-menu-vertical-demo"
     router
     unique-opened
+    :collapse="!$store.getters.siderType"
   >
     <el-sub-menu
       :index="item.id"
       v-for="(item, index) in menusList"
       :key="item.id"
+      background-color="#f4f4f5"
     >
       <template #title>
         <el-icon>
@@ -27,41 +30,20 @@
           <el-icon>
             <component :is="icon"></component>
           </el-icon>
-          <!-- <span>{{ item.authName }}</span> -->
           {{ it.authName }}
         </template>
       </el-menu-item>
-      <!-- <el-menu-item-group title="Group One">
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
-      </el-menu-item-group> -->
-      <!-- <el-menu-item-group title="Group Two">
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group> -->
-      <!-- <el-sub-menu index="1-4">
-        <template #title>item four</template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
-      </el-sub-menu> -->
     </el-sub-menu>
-    <!-- <el-menu-item index="2">
-      <el-icon><icon-menu /></el-icon>
-      <span>Navigator Two</span>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <el-icon><document /></el-icon>
-      <span>Navigator Three</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <el-icon><setting /></el-icon>
-      <span>Navigator Four</span>
-    </el-menu-item> -->
   </el-menu>
 </template>
 
 <script setup>
 import { menuList } from '@/api/menu'
 import { ref } from 'vue'
-
+// import variables from '@/styles/variables.scss'
+// const widdth = ref(variables.menuBg1)
+// import { useStore } from 'vuex'
+// const store = useStore()
 const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 const icon = ref('menu')
 const menusList = ref([])
@@ -73,10 +55,7 @@ initMenusList()
 const savePath = (path) => {
   sessionStorage.setItem('path', `/${path}`)
 }
+// const asideWidth = ref(variables.$sideBarWidth)
+// document.getElementById('menu1').dataset.width = '$hideSideBarWidth'
 </script>
-<style lang="scss" scoped>
-#menu1 {
-  background-color: $menuBg1;
-  active-text-color: $menuBg;
-}
-</style>
+<style lang="scss" scoped></style>
