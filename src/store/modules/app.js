@@ -28,6 +28,7 @@ export default {
   actions: {
     login: function ({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
+        console.log(userInfo)
         loginAPI(userInfo)
           .then((res) => {
             const loading = ElLoading.service({
@@ -47,6 +48,7 @@ export default {
             resolve()
           })
           .catch((err) => {
+            console.log(userInfo)
             reject(err)
           })
       })

@@ -4,18 +4,9 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
+  // baseURL: 'http://localhost:8888/',
   timeout: 5000
 })
-// 为每一个接口添加上token信息,通过service这个url拿到信息，都执行下面这个方法
-// service.interceptors.response.use(
-//   (config) => {
-//     config.headers.Authorization = localStorage.getItem('token')
-//     return config
-//   },
-//   (error) => {
-//     return Promise.reject(new Error(error))
-//   }
-// )
 // 使用axios的相应请求拦截器
 service.interceptors.response.use(
   (response) => {

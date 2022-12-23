@@ -4,12 +4,12 @@
       <h3 class="title">{{ $t('login.title') }}</h3>
     </div>
     <el-form ref="formRef" :model="form" class="login-form" :rules="rules">
-      <el-form-item prop="username">
+      <el-form-item prop="name">
         <!-- <el-icon :size="20" class="svg-container">
           <Edit />
         </el-icon> -->
         <svg-icon icon="user" class="svg-container"></svg-icon>
-        <el-input v-model="form.username" />
+        <el-input v-model="form.name" />
       </el-form-item>
       <el-form-item prop="password">
         <!-- <el-icon :size="20" class="svg-container">
@@ -36,11 +36,11 @@ import { useStore } from 'vuex'
 // import { login } from '@/api/login'
 const store = useStore()
 const form = ref({
-  username: '',
+  name: '',
   password: ''
 })
 const rules = ref({
-  username: [
+  name: [
     {
       required: true,
       message: 'please input Activity name',
