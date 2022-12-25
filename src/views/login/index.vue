@@ -25,11 +25,15 @@
       <el-button type="primary" class="login-button" @click="handleLogin">{{
         $t('login.btnTitle')
       }}</el-button>
+      <el-button type="info" class="login-button" @click="handleRegister">{{
+        $t('login.switch')
+      }}</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
+import router from '@/router'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 // import { Edit } from '@element-plus/icons-vue'
@@ -59,15 +63,15 @@ const formRef = ref(null)
 const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      // alert('submit!')
-      // const res = await login(form.value)
-      // console.log(res)
       store.dispatch('app/login', form.value)
     } else {
       console.log('error submit!!')
       return false
     }
   })
+}
+const handleRegister = () => {
+  router.replace('/register')
 }
 const passwordType = ref('password')
 const changeType = () => {
@@ -92,10 +96,11 @@ $cursor: #fff;
   overflow: hidden;
 
   .login-form {
+    margin-top: 40px;
     position: relative;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
+    padding: 100px 35px 0px;
     margin: 0 auto;
     overflow: hidden;
 
@@ -125,6 +130,14 @@ $cursor: #fff;
     .login-button {
       width: 100%;
       box-sizing: border-box;
+      margin-bottom: 20px;
+      margin-left: 0;
+    }
+    .register-button {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      margin-left: 0;
     }
   }
 

@@ -20,7 +20,8 @@ export default {
   },
   login: {
     title: 'user login',
-    btnTitle: 'login'
+    btnTitle: 'login',
+    switch: 'user register'
   },
   dialog: {
     deleteTitle: 'Are you sure you want to delete the user '

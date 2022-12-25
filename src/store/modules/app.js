@@ -1,4 +1,5 @@
 import { login as loginAPI } from '@/api/login'
+import { register as registerAPI } from '@/api/register'
 import router from '@/router'
 import { setTokenTime } from '@/utils/auth'
 import { ElLoading, ElMessage } from 'element-plus'
@@ -45,6 +46,30 @@ export default {
             commit('setToken', res.token)
             // 执行setTokenTime方法，设置token的登录时间
             setTokenTime()
+            resolve()
+          })
+          .catch((err) => {
+            console.log(userInfo)
+            reject(err)
+          })
+      })
+    },
+    register: function ({ commit }, userInfo) {
+      return new Promise((resolve, reject) => {
+        console.log(userInfo)
+        registerAPI(userInfo)
+          .then((res) => {
+            const loading = ElLoading.service({
+              lock: true,
+              text: 'Loading',
+              background: 'rgba(0,0,0,0.7)'
+            })
+            setTimeout(() => {
+              loading.close()
+              ElMessage.success('注册成功')
+              // 成功之后跳转到我们的登录页面
+              router.replace('/login')
+            })
             resolve()
           })
           .catch((err) => {

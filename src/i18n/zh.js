@@ -20,7 +20,8 @@ export default {
   },
   login: {
     title: '用户登录',
-    btnTitle: '登录'
+    btnTitle: '登录',
+    switch: '用户注册'
   },
   dialog: {
     deleteTitle: '确定要删除用户'

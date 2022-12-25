@@ -12,12 +12,12 @@ service.interceptors.response.use(
   (response) => {
     console.log(response)
     // 从response中返回data和meta，解构出来,elmessage该怎么用？
-    const { data, meta } = response.data
-    if (meta.status === 200 || meta.status === 201) {
-      return data
+    const { code } = response.data
+    if (code === 200 || code === 201) {
+      return response.data
     } else {
-      ElMessage.error(meta.msg)
-      return Promise.reject(new Error(meta.msg))
+      ElMessage.error(response.message)
+      return Promise.reject(new Error(response.message))
     } // 以上是由请求相应的情况，也可能连请求相应也没有
   },
   (error) => {
