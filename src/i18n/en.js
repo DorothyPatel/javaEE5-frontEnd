@@ -1,22 +1,18 @@
 export default {
   menus: {
     '/': 'home',
-    home: 'home',
-    users: 'users list',
-    roles: 'roles list',
-    rights: 'permission list',
-    goods: 'product list',
-    params: 'sorting list',
-    categories: 'goods category',
-    orders: 'order list',
-    reports: 'data report'
+    home: 'main page',
+    uploadPictures: 'upload picture',
+    myhome: 'my home page',
+    otherhome: 'other`s home page',
+    update: 'change password',
+    updateInfor: 'change information',
+    updateHead: 'change head photo'
   },
   manage: {
-    users: 'UserManagement',
-    rights: 'RightsManagement',
-    goods: 'GoodsManagement',
-    orders: 'OrdersManagement',
-    reports: 'ReportsManagement'
+    home: 'main page',
+    myhome: 'my home page',
+    update: 'change infor'
   },
   login: {
     title: 'user login',

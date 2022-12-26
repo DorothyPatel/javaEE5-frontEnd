@@ -1,22 +1,18 @@
 export default {
   menus: {
     '/': '首页',
-    home: '首页',
-    users: '用户列表',
-    roles: '角色列表',
-    rights: '权限列表',
-    goods: '商品列表',
-    params: '分类参数',
-    categories: '商品分类',
-    orders: '订单列表',
-    reports: '数据报表'
+    home: '项目首页',
+    uploadPictures: '发布图片',
+    myhome: '个人主页',
+    otherhome: '他人主页',
+    update: '修改密码',
+    updateInfor: '修改个人信息',
+    updateHead: '修改头像'
   },
   manage: {
-    users: '用户管理',
-    rights: '权限管理',
-    goods: '商品管理',
-    orders: '订单管理',
-    reports: '数据统计'
+    home: '首页',
+    myhome: '个人主页',
+    update: '个人信息维护'
   },
   login: {
     title: '用户登录',
