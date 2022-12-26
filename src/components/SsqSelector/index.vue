@@ -48,8 +48,8 @@ export default {
       cityList: [],
       // 被选中的县数据
       areaList: [],
-      selectProvince: {},
-      selectCity: {},
+      selectProvince: localStorage.getItem('province'),
+      selectCity: localStorage.getItem('city'),
       selectArea: {}
     }
   },
@@ -75,10 +75,6 @@ export default {
       }
       this.$emit('getLawyerListInfo', [event.label, 'city'])
     }
-    // selectAreaFun(event) {
-    //   console.log(event)
-    //   this.$emit('getLawyerListInfo', [event.label, 'area'])
-    // }
   }
 }
 </script>

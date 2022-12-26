@@ -33,3 +33,19 @@ export const deleteUser = (id) => {
     method: 'delete'
   })
 }
+
+export const changePassword = (data) => {
+  return request({
+    url: '/user/updatePassword',
+    method: 'post',
+    data
+  })
+}
+
+export const changeInfor = (data) => {
+  return request({
+    url: '/user/updateInfor',
+    method: 'post',
+    data
+  })
+}

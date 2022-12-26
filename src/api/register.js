@@ -14,3 +14,11 @@ export const checkUserName = (data) => {
     data
   })
 }
+
+export const checkPassword = (data) => {
+  return request({
+    url: '/register/checkPassword',
+    method: 'post',
+    data
+  })
+}

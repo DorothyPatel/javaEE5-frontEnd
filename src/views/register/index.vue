@@ -237,7 +237,7 @@ const rules = ref({
       trigger: 'blur'
     },
     {
-      pattern: '^[1-9][0-9]{4,12}$',
+      pattern: '^[1-9][0-9]{5,9}$',
       message: 'please input correct qq',
       trigger: 'blur'
     }
