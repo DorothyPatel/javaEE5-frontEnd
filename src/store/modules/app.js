@@ -1,7 +1,7 @@
 import { login as loginAPI } from '@/api/login'
 import { register as registerAPI } from '@/api/register'
 import { addPictureInfor as pictureAPI } from '@/api/picture'
-import { changePassword, changeInfor } from '@/api/users'
+import { changePassword, changeInfor, updateHeadphoto } from '@/api/users'
 import router from '@/router'
 import { setTokenTime } from '@/utils/auth'
 import { ElLoading, ElMessage } from 'element-plus'
@@ -23,7 +23,8 @@ export default {
     city: localStorage.getItem('city') || '',
     email: localStorage.getItem('email') || '',
     mobile: localStorage.getItem('mobile') || '',
-    qq: localStorage.getItem('qq') || ''
+    qq: localStorage.getItem('qq') || '',
+    headphoto: localStorage.getItem('headphoto') || ''
   }),
   mutations: {
     // 提交更新数据的方法
@@ -76,6 +77,10 @@ export default {
     setEmail(state, email) {
       state.email = email
       localStorage.setItem('email', email)
+    },
+    setHeadphoto(state, headphoto) {
+      state.headphoto = headphoto
+      localStorage.setItem('headphoto', headphoto)
     }
   },
   actions: {
@@ -108,7 +113,10 @@ export default {
                 commit('setMobile', res.data.mobile)
                 commit('setQq', res.data.qq)
                 commit('setEmail', res.data.email)
+                commit('setHeadphoto', res.data.headphoto)
                 setTokenTime()
+                console.log(res)
+                console.log(res.data)
               } else {
                 ElMessage.error('您的用户名或者密码不正确')
               }
@@ -150,6 +158,29 @@ export default {
       return new Promise((resolve, reject) => {
         console.log(userInfo)
         pictureAPI(userInfo)
+          .then((res) => {
+            const loading = ElLoading.service({
+              lock: true,
+              text: 'Loading',
+              background: 'rgba(0,0,0,0.7)'
+            })
+            setTimeout(() => {
+              loading.close()
+              if (res.success === true) ElMessage.success('上传成功')
+              else ElMessage.error('上传失败')
+            })
+            resolve()
+          })
+          .catch((err) => {
+            console.log(userInfo)
+            reject(err)
+          })
+      })
+    },
+    updateHeadInfor: function ({ commit }, userInfo) {
+      return new Promise((resolve, reject) => {
+        console.log(userInfo)
+        updateHeadphoto(userInfo)
           .then((res) => {
             const loading = ElLoading.service({
               lock: true,

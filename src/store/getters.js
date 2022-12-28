@@ -11,5 +11,6 @@ export default {
   introduction: (state) => state.app.introduction,
   mobile: (state) => state.app.mobile,
   email: (state) => state.app.email,
-  qq: (state) => state.app.qq
+  qq: (state) => state.app.qq,
+  headphoto: (state) => state.headphoto
 }
